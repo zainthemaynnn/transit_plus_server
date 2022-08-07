@@ -196,7 +196,7 @@ async fn main() -> Result<(), sqlx::Error> {
         )
         .await?;
 
-    load_example_db(&pool).await?;
+    //load_example_db(&pool).await?;
 
     HttpServer::new(move || {
         App::new()
