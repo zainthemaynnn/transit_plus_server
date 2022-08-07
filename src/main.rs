@@ -181,7 +181,6 @@ async fn load_example_db(conn: &PgPool) -> Result<(), sqlx::Error> {
 
 #[actix_web::main]
 async fn main() -> Result<(), sqlx::Error> {
-    println!("begin");
     let pool = PgPoolOptions::new()
         .max_connections(5)
         .connect_with(
@@ -198,8 +197,6 @@ async fn main() -> Result<(), sqlx::Error> {
         .await?;
 
     //load_example_db(&pool).await?;
-
-    println!("{}", env::var("PORT").unwrap());
 
     HttpServer::new(move || {
         App::new()
@@ -218,6 +215,8 @@ async fn main() -> Result<(), sqlx::Error> {
     ))?
     .run()
     .await?;
+
+    println!("{}", env::var("PORT").unwrap());
 
     Ok(())
 }
