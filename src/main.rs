@@ -207,7 +207,7 @@ async fn main() -> Result<(), sqlx::Error> {
             .service(thumbnails)
     })
     .bind((
-        Ipv4Addr::new(127, 0, 0, 1),
+        Ipv4Addr::new(0, 0, 0, 0),
         env::var("PORT")
             .unwrap_or(String::from("3000"))
             .parse()
