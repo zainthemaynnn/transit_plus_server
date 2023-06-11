@@ -13,14 +13,14 @@ use std::{env, fmt::Debug, fs, path::Path};
 
 lazy_static! {
     static ref OFFERS: Vec<Offer> = vec![
-        /*Offer {
-            name: "CN Tower",
-            description: "tall",
+        Offer {
+            name: "CN Tower".into(),
+            description: "tall".into(),
             value: 200,
             category: Category::Food,
-            thumbnail: fs::read("./data/cn-tower.jpg").unwrap(),
             sales: 0,
-        },*/
+            thumbnail: "cn-tower".into(),
+        },
         Offer {
             name: "Starbucks".into(),
             description: "covfefe".into(),
@@ -207,7 +207,7 @@ async fn main() -> Result<(), sqlx::Error> {
             .service(thumbnails)
     })
     .bind((
-        Ipv4Addr::new(0, 0, 0, 0),
+        Ipv4Addr::new(127, 0, 0, 1),
         env::var("PORT")
             .unwrap_or(String::from("3000"))
             .parse()
